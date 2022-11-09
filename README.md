@@ -1,17 +1,6 @@
 <h1> CRUD React Native </h1>
 
-* Dependências
-  * @react-native-community/masked-view
-  * @react-navigation/native
-  * @react-navigation/stack
-  * expo
-  * expo-sqlite
-  * expo-status-bar
-  * react-native-gesture-handler  
-  * react-native-reanimated
-  * react-native-safe-area-context
-  * react-native-screens 
-  * react-native-vector-icons
+* Alunos: Jefferson Honorato, Lucas Barros, Nathan Pizao, Gabriel Bastos
 
 </br>
 
