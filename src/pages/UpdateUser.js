@@ -32,7 +32,7 @@ const UpdateUser = ({ navigation }) => {
     console.log(inputUserId);
     db.transaction((tx) => {
       tx.executeSql(
-        'SELECT * FROM table_user where user_id = ?',
+        'SELECT user_name, user_nascimento, user_time FROM table_user where user_id = ?',
         [inputUserId],
         (tx, results) => {
           var len = results.rows.length;
@@ -77,7 +77,7 @@ const UpdateUser = ({ navigation }) => {
         'UPDATE table_user set user_name=?,  user_senha=? , user_nascimento=?, user_time=? where user_id=?',
         [userName, userSenha, userNascimento, userTime, inputUserId],
         (tx, results) => {
-          console.log('Results', results.rowsAffected);
+          // console.log('Results', results.rowsAffected);
           if (results.rowsAffected > 0) {
             Alert.alert(
               'Sucesso',
@@ -97,17 +97,20 @@ const UpdateUser = ({ navigation }) => {
   };
 
   return (
-    <SafeAreaView style={{ flex: 1 }}>
-      <View style={{ flex: 1, backgroundColor: 'white' }}>
-        <View style={{ flex: 1 }}>
+    <SafeAreaView style={{flex: 1,
+      backgroundColor: '#F2F3F7',
+      alignItems: 'center', 
+      paddingTop: 30}}>
           <ScrollView keyboardShouldPersistTaps="handled">
-            <KeyboardAvoidingView
-              behavior="padding"
-              style={{ flex: 1, justifyContent: 'space-between' }}>
-              <Mytext text="Filtro de Usuário" />
+            <KeyboardAvoidingView>
               <Mytextinput
                 placeholder="Entre com o Código do Usuário"
-                style={{ padding: 10 }}
+                style={{
+                  borderWidth: 1,
+                  padding: 10,
+                  borderRadius: 3,
+                  borderColor: 'white',
+                  backgroundColor: 'white' }}
                 onChangeText={
                   (inputUserId) => setInputUserId(inputUserId)
                 }
@@ -119,20 +122,31 @@ const UpdateUser = ({ navigation }) => {
               <Mytextinput
                 placeholder="Entre com o Nome"
                 value={userName}
-                style={{ padding: 10 }}
+                style={{
+                  borderWidth: 1,
+                  padding: 10,
+                  borderRadius: 3,
+                  borderColor: 'white',
+                  backgroundColor: 'white' }}
                 onChangeText={
                   (userName) => setUserName(userName)
                 }
               />
               <Mytextinput
                 placeholder="Entre com a Senha"
-                value={'' + userSenha}
+                value={userSenha}
                 onChangeText={
                   (userSenha) => setUserSenha(userSenha)
                 }
                 maxLength={10}
-                style={{ padding: 10 }}
-                keyboardType="numeric"
+                style={{
+                  borderWidth: 1,
+                  padding: 10,
+                  borderRadius: 3,
+                  borderColor: 'white',
+                  backgroundColor: 'white' }}
+                secureTextEntry={true}
+                keyboardType="visible-password"
               />
               <Mytextinput
                 value={userNascimento}
@@ -140,10 +154,13 @@ const UpdateUser = ({ navigation }) => {
                 onChangeText={
                   (userNascimento) => setUserNascimento(userNascimento)
                 }
-                maxLength={225}
-                numberOfLines={5}
-                multiline={true}
-                style={{ textAlignVertical: 'top', padding: 10 }}
+                style={{
+                  borderWidth: 1,
+                  padding: 10,
+                  borderRadius: 3,
+                  borderColor: 'white',
+                  backgroundColor: 'white' }}
+                keyboardType="default"
               />
               <Mytextinput
                 value={userTime}
@@ -151,10 +168,13 @@ const UpdateUser = ({ navigation }) => {
                 onChangeText={
                   (userTime) => setUserTime(userTime)
                 }
-                maxLength={225}
-                numberOfLines={5}
-                multiline={true}
-                style={{ textAlignVertical: 'top', padding: 10 }}
+                style={{
+                  borderWidth: 1,
+                  padding: 10,
+                  borderRadius: 3,
+                  borderColor: 'white',
+                  backgroundColor: 'white' }}
+                keyboardType="default"
               />
               <Mybutton
                 title="Atualizar Usuário"
@@ -162,8 +182,6 @@ const UpdateUser = ({ navigation }) => {
               />
             </KeyboardAvoidingView>
           </ScrollView>
-        </View>
-      </View>
     </SafeAreaView>
   );
 };

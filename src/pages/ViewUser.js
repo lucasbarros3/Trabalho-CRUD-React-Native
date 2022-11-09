@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Text, View, SafeAreaView } from 'react-native';
+import { Text, View, SafeAreaView, ScrollView, KeyboardAvoidingView } from 'react-native';
 import Mytext from './components/Mytext';
 import Mytextinput from './components/Mytextinput';
 import Mybutton from './components/Mybutton';
@@ -33,31 +33,36 @@ const ViewUser = () => {
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
-      <View style={{ flex: 1, backgroundColor: 'white' }}>
-        <View style={{ flex: 1 }}>
-          <Mytext text="Filtro de Usuário" />
+      <ScrollView keyboardShouldPersistTaps="handled" style={{
+              marginLeft: 20,
+            }}>
+      <KeyboardAvoidingView>
           <Mytextinput
             placeholder="Entre com o Código do Usuário"
             onChangeText={
               (inputUserId) => setInputUserId(inputUserId)
             }
-            style={{ padding: 10 }}
+            style={{
+              borderWidth: 1,
+              padding: 10,
+              borderRadius: 3,
+              borderColor: 'white',
+              backgroundColor: 'white' }}
           />
           <Mybutton title="Buscar Usuário" customClick={searchUser} />
           <View
             style={{
-              marginLeft: 35,
+              marginLeft: 15,
               marginRight: 35,
               marginTop: 10
             }}>
             <Text>Código : {userData.user_id}</Text>
             <Text>Nome : {userData.user_name}</Text>
-            <Text>Senha : {userData.user_senha}</Text>
             <Text>Data de Nascimento : {userData.user_nascimento}</Text>
             <Text>Time : {userData.user_time}</Text>
           </View>
-        </View>
-      </View>
+        </KeyboardAvoidingView>
+        </ScrollView>
     </SafeAreaView>
   );
 };

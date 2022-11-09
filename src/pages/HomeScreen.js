@@ -8,21 +8,12 @@ const db = DatabaseConnection.getConnection();
 const HomeScreen = ({ navigation }) => {
   useEffect(() => {
     db.transaction(function (txn) {
-      txn.executeSql(
-        "SELECT name FROM sqlite_master WHERE type='table' AND name='table_user'",
-        [],
-        function (tx, res) {
-          console.log('item:', res.rows.length);
-          if (res.rows.length == 0) {
-            txn.executeSql('DROP TABLE IF EXISTS table_user', []);
-            txn.executeSql(
-              'CREATE TABLE table_user(user_id INTEGER PRIMARY KEY AUTOINCREMENT, user_name VARCHAR(20), user_senha VARCHAR(20), user_nascimento VARCHAR(10), user_time VARCHAR(100))',
-              []
-            );
-          }
-        }
-      );
-    });
+        txn.executeSql('DROP TABLE IF EXISTS table_user', []);
+        txn.executeSql(
+          'CREATE TABLE table_user(user_id INTEGER PRIMARY KEY AUTOINCREMENT, user_name VARCHAR(20), user_senha VARCHAR(20), user_nascimento VARCHAR(10), user_time VARCHAR(100))',
+          []
+        );
+      });
   }, []);
 
   return (

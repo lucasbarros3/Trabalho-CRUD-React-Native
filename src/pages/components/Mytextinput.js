@@ -14,14 +14,14 @@ const Mytextinput = (props) => {
         numberOfLines={props.numberOfLines}
         onSubmitEditing={props.onSubmitEditing}
         style={{
-          height:'100%',
+          flex:1,
           margin: 12,
           borderWidth: 1,
-          padding: 10,
+          padding: 20,
           borderRadius: 3,
           borderColor: 'white',
           backgroundColor: 'white',
-          width: 400}}
+          width: 350}}
         blurOnSubmit={false}
         value={props.value}
       />

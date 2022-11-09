@@ -48,11 +48,10 @@ const RegisterUser = ({ navigation }) => {
 
     db.transaction(function (tx) {
       tx.executeSql(
-        'INSERT INTO table_user (user_name,  user_senha, user_nascimento, user_time) VALUES (?,?,?,?)',
+        'INSERT INTO table_user (user_name, user_senha, user_nascimento, user_time) VALUES (?,?,?,?)',
         [userName, userSenha, userNascimento, userTime],
         
         (tx, results) => {
-          console.log('asd');
           //console.log('Results', results.rowsAffected);
           if (results.rowsAffected > 0) {
             Alert.alert(
@@ -75,9 +74,8 @@ const RegisterUser = ({ navigation }) => {
   return (
     <SafeAreaView style={{flex: 1,
       backgroundColor: '#F2F3F7',
-      justifyContent: 'center',
-      alignItems:'center',
-      marginBottom: 30}}>
+      alignItems: 'center', 
+      paddingTop: 30}}>
       <SelectDropdown
             data={times}
             // defaultValueByIndex={1}
@@ -87,6 +85,7 @@ const RegisterUser = ({ navigation }) => {
             }}
             defaultButtonText={'Times'}
             buttonTextAfterSelection={(selectedItem, index) => {
+              userTime = selectedItem;
               return selectedItem;
             }}
             rowTextForSelection={(item, index) => {
@@ -102,9 +101,7 @@ const RegisterUser = ({ navigation }) => {
             rowStyle={styles.dropdown1RowStyle}
             rowTextStyle={styles.dropdown1RowTxtStyle}
           />
-      <View style={{justifyContent: 'center',
-      alignItems:'center',
-      marginBottom: 30}}>
+      <View>
           <ScrollView keyboardShouldPersistTaps="handled">
             <KeyboardAvoidingView>
               <Mytextinput
@@ -118,20 +115,20 @@ const RegisterUser = ({ navigation }) => {
                   borderRadius: 3,
                   borderColor: 'white',
                   backgroundColor: 'white' }}
+                keyboardType="default"
               />
               <Mytextinput
                 placeholder="Senha"
                 onChangeText={
                   (userSenha) => setUserSenha(userSenha)
                 }
-                keyboardType="text"
                 style={{ 
-                  height:'50px',
                   borderWidth: 1,
                   padding: 10,
                   borderRadius: 3,
                   borderColor: 'white',
                   backgroundColor: 'white'}}
+                keyboardType="default"
               />
               <Mytextinput
                 placeholder="Data de Nascimento"
@@ -143,8 +140,8 @@ const RegisterUser = ({ navigation }) => {
                   borderRadius: 3,
                   borderColor: 'white',
                   backgroundColor: 'white'}}
+                keyboardType="default"
               />
-              <StatusBar backgroundColor="#FFF" barStyle="dark-content" />
               <Mybutton title="Salvar" customClick={register_user} />
             </KeyboardAvoidingView>
           </ScrollView>
