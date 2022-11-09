@@ -2,12 +2,11 @@
 
 * Alunos: Jefferson Honorato, Lucas Barros, Nathan Pizao, Gabriel Bastos
 
-**Observação:** Rodar no app EXPO GO via mobile, a versão web quebra o drop down de times no registro de usuário
 
 </br>
 
 <h3> Rodando o Projeto</h3>
-
+**Observação:** Rodar no app EXPO GO via mobile, a versão web quebra o drop down de times no registro de usuário
 ```bash
 # Clone este repositório
 $ git clone https://github.com/PANELAADS/Trabalho-Crud.git
