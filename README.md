@@ -11,7 +11,7 @@
 
 ```bash
 # Clone este repositório
-$ git clone https://github.com/PANELAADS/Trabalho-Crud.git
+$ git clone https://github.com/lucasbarros3/Trabalho-Crud.git
 
 # Acesse a pasta do Projeto
 $ cd Trabalho-Crud
